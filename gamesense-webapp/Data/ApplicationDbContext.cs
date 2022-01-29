@@ -30,5 +30,6 @@
         public DbSet<Game> Games { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Genre_Game> Genres_Games { get; set; }
+        public object Genre { get; internal set; }
     }
 }
