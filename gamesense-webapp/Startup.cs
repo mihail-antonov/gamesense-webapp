@@ -30,6 +30,7 @@ namespace gamesense_webapp
         {
             services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionStrings")));
             services.AddTransient<IGenreRepository, GenreRepository>();
+            services.AddTransient<IPublisherRepository, PublisherRepository>();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

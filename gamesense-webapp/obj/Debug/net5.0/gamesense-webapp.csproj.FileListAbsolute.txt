@@ -86,5 +86,9 @@ D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Genres\Create.cshtml.g.cs
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Genres\Edit.cshtml.g.cs
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Shared\404.cshtml.g.cs
-D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\gamesense-webapp.csproj.AssemblyReference.cache
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Genres\Details.cshtml.g.cs
+D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Publishers\Index.cshtml.g.cs
+D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\gamesense-webapp.csproj.AssemblyReference.cache
+D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Publishers\Create.cshtml.g.cs
+D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Publishers\Details.cshtml.g.cs
+D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Publishers\Edit.cshtml.g.cs
