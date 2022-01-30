@@ -3,6 +3,7 @@
     using gamesense_webapp.Models;
     using gamesense_webapp.Repositories;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,11 +19,18 @@
 
         public IActionResult Index()
         {
-            return View();
+            var data = _repo.GetGames();
+            return View(data);
         }
 
         public IActionResult Create()
         {
+            var movieDropdownsData = await _repo.GetNewMovieDropdownsValues();
+
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+
             return View();
         }
 

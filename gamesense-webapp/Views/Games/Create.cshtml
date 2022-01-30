@@ -1,0 +1,57 @@
+﻿@model Game
+
+@{ ViewData["Title"] = "Create game"; }
+
+<div class="row text">
+    <div class="col-12">
+        <h1>Create Game</h1>
+
+        <div class="row">
+            <div class="col-12">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cover" class="control-label"></label>
+                        <input asp-for="Cover" class="form-control" />
+                        <span asp-validation-for="Cover" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Platform" class="control-label"></label>
+                        <select asp-for="Platform" class="form-control">
+                            <option value="PC">PC</option>
+                            <option value="Playstation">Playstation</option>
+                            <option value="Xbox">Xbox</option>
+                            <option value="Stadia">Stadia</option>
+                        </select>
+                        <span asp-validation-for="Platform" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublisherId" class="control-label"></label>
+                        <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.Publishers"></select>
+                        <span asp-validation-for="PublisherId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                    </div>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Back to list</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
