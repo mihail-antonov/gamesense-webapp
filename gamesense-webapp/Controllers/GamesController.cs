@@ -25,12 +25,6 @@
 
         public IActionResult Create()
         {
-            var movieDropdownsData = await _repo.GetNewMovieDropdownsValues();
-
-            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
-            ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
-            ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
-
             return View();
         }
 
@@ -39,6 +33,7 @@
         {
             if (!ModelState.IsValid)
             {
+
                 return View(game);
             }
 
