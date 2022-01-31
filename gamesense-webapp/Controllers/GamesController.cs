@@ -20,14 +20,14 @@
 
         public IActionResult Index()
         {
-            var data = this._repo.GetGames();
+            var data = _repo.GetGames();
             return View(data);
         }
 
         //Get
         public async Task<IActionResult> Create()
         {
-            var gameDropdownValues = await this._repo.GetDropdownValuesVM();
+            var gameDropdownValues = await _repo.GetDropdownValuesVM();
 
             ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
             ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
@@ -40,7 +40,7 @@
         {
             if (!ModelState.IsValid)
             {
-                var gameDropdownValues = await this._repo.GetDropdownValuesVM();
+                var gameDropdownValues = await _repo.GetDropdownValuesVM();
 
                 ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
                 ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
@@ -48,7 +48,7 @@
                 return View(newGVM);
             }
 
-            await this._repo.AddGame(newGVM);
+            await _repo.AddGame(newGVM);
 
             return RedirectToAction(nameof(Index));
         }
@@ -56,7 +56,7 @@
         //Get
         public async Task<IActionResult> Details(int id)
         {
-            var gameView = await this._repo.GetById(id);
+            var gameView = await _repo.GetByIdAsync(id);
             if (gameView == null)
             {
                 return View("404");
@@ -68,7 +68,7 @@
         //Get
         public async Task<IActionResult> Edit(int id)
         {
-            var gameView = await this._repo.GetById(id);
+            var gameView = await _repo.GetByIdAsync(id);
             if (gameView == null)
             {
                 return View("404");
@@ -86,7 +86,7 @@
                 Genre_Ids = gameView.Genre_Game.Select(n => n.GenreId).ToList(),
             };
 
-            var gameDropdownValues = await this._repo.GetDropdownValuesVM();
+            var gameDropdownValues = await _repo.GetDropdownValuesVM();
 
             ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
             ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
@@ -99,10 +99,10 @@
         {
             if (!ModelState.IsValid)
             {
-                var movieDropdownValues = await this._repo.GetDropdownValuesVM();
+                var gameDropdownValues = await _repo.GetDropdownValuesVM();
 
-                ViewBag.Genres = new SelectList(movieDropdownValues.Genres, "Id", "Name");
-                ViewBag.Publishers = new SelectList(movieDropdownValues.Publishers, "Id", "Name");
+                ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
+                ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
 
                 return View(newGVM);
             }

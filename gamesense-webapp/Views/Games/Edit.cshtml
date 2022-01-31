@@ -1,13 +1,13 @@
-﻿@model Genre
+﻿@model NewGameVM
+@using gamesense_webapp.Data.ViewModels;
 
 @{ ViewData["Title"] = "Update Genre"; }
 
 <div class="row text">
     <div class="col-12">
-      
-        <h1>Update Genre</h1>
-        <span class="badge bg-secondary">@Model.Name</span>
-       
+
+        <h1>Update Game</h1>
+
         <div class="row">
             <div class="col-md-8 offset-2">
                 <form asp-action="Edit">
@@ -17,18 +17,42 @@
                         <input asp-for="Id" class="form-control" readonly />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Description" class="control-label"></label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <label asp-for="Cover" class="control-label"></label>
+                        <input asp-for="Cover" class="form-control" />
+                        <span asp-validation-for="Cover" class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
-                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Platform" class="control-label"></label>
+                        <select asp-for="Platform" class="form-control">
+                            <option value="PC">PC</option>
+                            <option value="Playstation">Playstation</option>
+                            <option value="Xbox">Xbox</option>
+                            <option value="Stadia">Stadia</option>
+                        </select>
+                        <span asp-validation-for="Platform" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Genre_Ids" class="control-label"></label>
+                        <select asp-for="Genre_Ids" class="form-control" asp-items="ViewBag.Genres"></select>
+                        <span asp-validation-for="Genre_Ids" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublisherId" class="control-label"></label>
+                        <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.Publishers"></select>
+                        <span asp-validation-for="PublisherId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Edit" class="btn btn-outline-success float-right" />
                     </div>
                     <a class="btn btn-outline-secondary" asp-action="Index">Back to list</a>
 

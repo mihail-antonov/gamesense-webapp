@@ -11,7 +11,7 @@
     {
         IEnumerable<Game> GetGames();
         Task AddGame(NewGameVM newGVM);
-        Task<Game> GetById(int id);
+        Task<Game> GetByIdAsync(int id);
         Task Update(NewGameVM newGVM);
         void Delete(int Id);
 

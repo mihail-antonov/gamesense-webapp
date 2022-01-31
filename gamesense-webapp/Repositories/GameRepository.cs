@@ -29,8 +29,8 @@
                 PublisherId = newGVM.PublisherId
             };
 
-            this._context.Games.Add(game);
-            this._context.SaveChanges();
+            _context.Games.Add(game);
+            _context.SaveChanges();
 
             foreach (var genreId in newGVM.Genre_Ids)
             {
@@ -46,7 +46,7 @@
             _context.SaveChanges();
         }
 
-        public async Task<Game> GetById(int id)
+        public async Task<Game> GetByIdAsync(int id)
         {
             var details = await _context.Games
                 .Include(p => p.Publisher)
@@ -90,7 +90,7 @@
 
             var genres = _context.Genres_Games.Where(n => n.GameId == newGVM.Id).ToList();
             _context.Genres_Games.RemoveRange(genres);
-            await this._context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             foreach (var genreId in newGVM.Genre_Ids)
             {
