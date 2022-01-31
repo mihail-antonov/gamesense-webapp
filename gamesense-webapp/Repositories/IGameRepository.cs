@@ -1,5 +1,6 @@
 ﻿namespace gamesense_webapp.Repositories
 {
+    using gamesense_webapp.Data.ViewModels;
     using gamesense_webapp.Models;
     using System;
     using System.Collections.Generic;
@@ -9,9 +10,11 @@
     public interface IGameRepository
     {
         IEnumerable<Game> GetGames();
-        void AddGame(Game game);
-        Game GetById(int Id);
-        Game Update(int Id, Game updatedGame);
+        Task AddGame(NewGameVM newGVM);
+        Task<Game> GetById(int id);
+        Task Update(NewGameVM newGVM);
         void Delete(int Id);
+
+        Task<DropdownGameVM> GetDropdownValuesVM();
     }
 }

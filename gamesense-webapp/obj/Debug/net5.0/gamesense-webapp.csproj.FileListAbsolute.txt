@@ -95,3 +95,4 @@ D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Games\Details.cshtml.g.cs
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Games\Edit.cshtml.g.cs
 D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\Razor\Views\Games\Index.cshtml.g.cs
+D:\projects\gamesense-webapp\gamesense-webapp\gamesense-webapp\obj\Debug\net5.0\gamesense-webapp.csproj.AssemblyReference.cache

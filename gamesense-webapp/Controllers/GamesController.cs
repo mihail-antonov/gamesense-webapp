@@ -1,5 +1,6 @@
 ﻿namespace gamesense_webapp.Controllers
 {
+    using gamesense_webapp.Data.ViewModels;
     using gamesense_webapp.Models;
     using gamesense_webapp.Repositories;
     using Microsoft.AspNetCore.Mvc;
@@ -19,31 +20,43 @@
 
         public IActionResult Index()
         {
-            var data = _repo.GetGames();
+            var data = this._repo.GetGames();
             return View(data);
         }
 
-        public IActionResult Create()
+        //Get
+        public async Task<IActionResult> Create()
         {
+            var gameDropdownValues = await this._repo.GetDropdownValuesVM();
+
+            ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
+            ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
+
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Title, Description, Cover, Price, Platform, PublisherId")] Game game)
+        public async Task<IActionResult> Create(NewGameVM newGVM)
         {
             if (!ModelState.IsValid)
             {
+                var gameDropdownValues = await this._repo.GetDropdownValuesVM();
 
-                return View(game);
+                ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
+                ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
+
+                return View(newGVM);
             }
 
-            _repo.AddGame(game);
+            await this._repo.AddGame(newGVM);
+
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Details(int id)
+        //Get
+        public async Task<IActionResult> Details(int id)
         {
-            var gameView = _repo.GetById(id);
+            var gameView = await this._repo.GetById(id);
             if (gameView == null)
             {
                 return View("404");
@@ -52,26 +65,49 @@
             return View(gameView);
         }
 
-        public IActionResult Edit(int id)
+        //Get
+        public async Task<IActionResult> Edit(int id)
         {
-            var gameView = _repo.GetById(id);
+            var gameView = await this._repo.GetById(id);
             if (gameView == null)
             {
                 return View("404");
             }
 
-            return View(gameView);
+            var response = new NewGameVM()
+            {
+                Id = gameView.Id,
+                Title = gameView.Title,
+                Description = gameView.Description,
+                Cover = gameView.Cover,
+                Price = gameView.Price,
+                Platform = gameView.Platform,
+                PublisherId = gameView.PublisherId,
+                Genre_Ids = gameView.Genre_Game.Select(n => n.GenreId).ToList(),
+            };
+
+            var gameDropdownValues = await this._repo.GetDropdownValuesVM();
+
+            ViewBag.Genres = new SelectList(gameDropdownValues.Genres, "Id", "Name");
+            ViewBag.Publishers = new SelectList(gameDropdownValues.Publishers, "Id", "Name");
+
+            return View(response);
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("Id, Title, Description, Cover, Price, Platform, PublisherId")] Game game)
+        public async Task<IActionResult> Edit(int id, NewGameVM newGVM)
         {
             if (!ModelState.IsValid)
             {
-                return View(game);
+                var movieDropdownValues = await this._repo.GetDropdownValuesVM();
+
+                ViewBag.Genres = new SelectList(movieDropdownValues.Genres, "Id", "Name");
+                ViewBag.Publishers = new SelectList(movieDropdownValues.Publishers, "Id", "Name");
+
+                return View(newGVM);
             }
 
-            _repo.Update(id, game);
+            await _repo.Update(newGVM);
 
             return RedirectToAction(nameof(Index));
         }
@@ -79,7 +115,7 @@
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            _repo.Delete(id);
+            this._repo.Delete(id);
 
             return RedirectToAction(nameof(Index));
         }
