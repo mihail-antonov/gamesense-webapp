@@ -4,8 +4,9 @@
 
 <div class="row">
     <div class="col-12">
+
         <h1>Publisher Details</h1>
-        <span class="badge bg-secondary">@Model.Name</span>
+        <span class="badge bg-warning mb-3">@Model.Name</span>
 
         <div class="row">
             <div class="col-12">
@@ -33,7 +34,7 @@
                     {
                         <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
                     }
-                    <a class="btn btn-outline-secondary" asp-action="Index">Back to list</a>
+                    <a class="btn btn-outline-secondary mt-4" asp-action="Index">Back to list</a>
                 </div>
             </div>
         </div>
